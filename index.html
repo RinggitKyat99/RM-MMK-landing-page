@@ -129,8 +129,8 @@
 
   <script>
     // 以下为演示汇率，请在正式使用前改成你的实际报价。
-    const mmkToMyrRate = 800;
-const myrToMmkRate = 780;
+    let mmkToMyrRate = 800;
+let myrToMmkRate = 780;
     const whatsappNumber = "601168512705";
 
     const direction = document.getElementById("direction");
@@ -179,6 +179,38 @@ rateNote.textContent =
 
     direction.addEventListener("change", update);
     amount.addEventListener("input", update);
+    async function loadExchangeRates() {
+  const supabaseUrl = "https://expdhkafzwohizszwdyd.supabase.co/rest/v1/";
+  const supabaseKey = "sb_publishable_roKipX4wYIT1GZ7o-Awl9g_EVF_4K6n";
+
+  try {
+    const response = await fetch(
+      supabaseUrl + "/rest/v1/exchange_rates?select=mmk_to_myr_rate,myr_to_mmk_rate&id=eq.1",
+      {
+        headers: {
+          apikey: supabaseKey,
+          Authorization: "Bearer " + supabaseKey
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("无法读取汇率");
+    }
+
+    const rows = await response.json();
+
+    if (rows.length > 0) {
+      mmkToMyrRate = Number(rows[0].mmk_to_myr_rate);
+      myrToMmkRate = Number(rows[0].myr_to_mmk_rate);
+      update();
+    }
+  } catch (error) {
+    console.error("读取汇率失败：", error);
+  }
+}
+
+loadExchangeRates();
     update();
   </script>
 </body>
