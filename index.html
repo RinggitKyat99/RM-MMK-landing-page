@@ -584,20 +584,18 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
     // 管理员入口显示与隐藏
+
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("toggleAdminButton");
   const adminPanel = document.getElementById("adminPanel");
 
-  adminPanel.style.display = "none";
+  adminPanel.hidden = true;
 
   toggleButton.addEventListener("click", function () {
-    if (adminPanel.style.display === "none") {
-      adminPanel.style.display = "flex";
-    } else {
-      adminPanel.style.display = "none";
-    }
+    adminPanel.hidden = !adminPanel.hidden;
   });
 });
+
     
   
   // 三语切换与记忆
