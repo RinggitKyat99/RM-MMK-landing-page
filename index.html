@@ -309,10 +309,10 @@ button:active {
 
     <section class="panel">
       <div class="field">
-        <label for="direction">选择兑换方向</label>
+       <label id="directionLabel" for="direction">选择兑换方向</label>
         <select id="direction">
-          <option value="mmk-myr">🇲🇲 MMK → 🇲🇾 MYR</option>
-          <option value="myr-mmk">🇲🇾 MYR → 🇲🇲 MMK</option>
+      <option value="mmk-myr" id="optionMmkMyr">MM MMK → MY MYR</option>
+<option value="myr-mmk" id="optionMyrMmk">MY MYR → MM MMK</option>
         </select>
       </div>
 
@@ -605,24 +605,50 @@ document.addEventListener("DOMContentLoaded", function () {
     const languageSelect = document.getElementById("languageSelect");
 
     const translations = {
+     
       my: {
         title: "MMK ⇄ MYR",
-        description: "မြန်မာကျပ်နှင့် မလေးရှားရင်းဂစ် ငွေလဲဝန်ဆောင်မှု။<br>ရိုးရှင်းလွယ်ကူစွာ ခန့်မှန်းငွေပမာဏကို ကြည့်ရှုနိုင်ပါသည်။"
+        description: "မြန်မာကျပ်နှင့် မလေးရှားရင်းဂစ် ငွေလဲဝန်ဆောင်မှု။<br>ရိုးရှင်းလွယ်ကူစွာ ခန့်မှန်းငွေပမာဏကို ကြည့်ရှုနိုင်ပါသည်။",
+        direction: "ငွေလဲမည့် ဦးတည်ချက်ကို ရွေးချယ်ပါ",
+        optionMmkMyr: "MMK → MYR",
+        optionMyrMmk: "MYR → MMK",
+        amountLabel: "ငွေပမာဏ (MMK)",
+        amountPlaceholder: "ငွေပမာဏကို ထည့်ပါ"
       },
+
+      
       en: {
         title: "MMK ⇄ MYR",
-        description: "Myanmar Kyat to Malaysian Ringgit exchange service.<br>Check estimated exchange amounts quickly and easily."
+        description: "Myanmar Kyat to Malaysian Ringgit exchange service.<br>Check estimated exchange amounts quickly and easily.",
+        direction: "Select exchange direction",
+        optionMmkMyr: "MMK → MYR",
+        optionMyrMmk: "MYR → MMK",
+        amountLabel: "Amount (MMK)",
+        amountPlaceholder: "Enter amount"
       },
+
+      
       zh: {
         title: "MMK ⇄ MYR",
-        description: "缅币 · 马币兑换服务。<br>简单、方便，轻松查询参考金额。"
+        description: "缅币 · 马币兑换服务。<br>简单、方便，轻松查询参考金额。",
+        direction: "选择兑换方向",
+        optionMmkMyr: "MMK → MYR",
+        optionMyrMmk: "MYR → MMK",
+        amountLabel: "兑换金额（MMK）",
+        amountPlaceholder: "请输入兑换金额"
       }
+
     };
 
     function applyLanguage(language) {
       const text = translations[language] || translations.my;
       document.getElementById("pageTitle").textContent = text.title;
       document.getElementById("pageDescription").innerHTML = text.description;
+      document.getElementById("directionLabel").textContent = text.direction;
+document.getElementById("optionMmkMyr").textContent = text.optionMmkMyr;
+document.getElementById("optionMyrMmk").textContent = text.optionMyrMmk;
+document.getElementById("amountLabel").textContent = text.amountLabel;
+document.getElementById("amount").placeholder = text.amountPlaceholder;
       languageSelect.value = language;
       localStorage.setItem("siteLanguage", language);
     }
