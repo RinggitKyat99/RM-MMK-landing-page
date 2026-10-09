@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MMK ⇄ MYR Currency Exchange</title>
+  <meta name="description" content="缅币与马币兑换服务，查询参考汇率并联系客户服务。">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7f5;
+      color: #17352a;
+    }
+    header {
+      padding: 22px 20px;
+      background: white;
+      border-bottom: 1px solid #e5ebe7;
+      font-weight: bold;
+    }
+    .logo { max-width: 480px; margin: auto; }
+    main {
+      max-width: 480px;
+      margin: 42px auto;
+      padding: 0 18px;
+    }
+    .intro { text-align: center; margin-bottom: 28px; }
+    .intro h1 { font-size: 30px; margin-bottom: 10px; }
+    .intro p { color: #65776e; line-height: 1.6; }
+    .panel {
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 8px 28px #17352a0d;
+    }
+    label { display: block; font-size: 14px; margin-bottom: 10px; }
+    select, input {
+      width: 100%;
+      border: 1px solid #dce5df;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 17px;
+      background: white;
+      color: #17352a;
+    }
+    .field { margin-bottom: 18px; }
+    .switch {
+      width: 44px;
+      height: 44px;
+      display: block;
+      margin: 0 auto 18px;
+      border: 1px solid #dce5df;
+      border-radius: 50%;
+      background: #f4f7f5;
+      font-size: 21px;
+      cursor: pointer;
+    }
+    .result {
+      padding: 18px;
+      background: #eef7f1;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .result small { color: #65776e; }
+    .result h2 { margin: 8px 0 0; font-size: 27px; overflow-wrap: anywhere; }
+    .rate-note { font-size: 12px; color: #65776e; line-height: 1.6; }
+    .whatsapp {
+      display: block;
+      text-align: center;
+      background: #167a52;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 16px;
+      border-radius: 12px;
+    }
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: #65776e;
+    }
+  </style>
+</head>
+<body>
+  <header><div class="logo">MY EXCHANGE</div></header>
+
+  <main>
+    <section class="intro">
+      <h1>MMK ⇄ MYR</h1>
+      <p>缅币 · 马币兑换服务<br>简单、方便，轻松查询参考金额。</p>
+    </section>
+
+    <section class="panel">
+      <div class="field">
+        <label for="direction">选择兑换方向</label>
+        <select id="direction">
+          <option value="mmk-myr">🇲🇲 MMK → 🇲🇾 MYR</option>
+          <option value="myr-mmk">🇲🇾 MYR → 🇲🇲 MMK</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label id="amountLabel" for="amount">兑换金额（MMK）</label>
+        <input id="amount" type="number" min="0" step="any"
+          value="1000000" placeholder="输入兑换金额">
+      </div>
+
+      <div class="result">
+        <small>预计兑换金额</small>
+        <h2 id="result">RM 1,250.00</h2>
+      </div>
+
+      <p class="rate-note" id="rateNote">
+        示例汇率：1 MYR = 800 MMK。此为演示数据，并非实时或实际报价。
+      </p>
+
+      <a class="whatsapp" id="whatsapp" href="#" target="_blank"
+        rel="noopener noreferrer">WhatsApp 联系我们</a>
+    </section>
+  </main>
+
+  <footer>
+    汇率可能变动，实际交易金额以确认报价为准。<br>
+    © 2026 MY EXCHANGE
+  </footer>
+
+  <script>
+    // 以下为演示汇率，请在正式使用前改成你的实际报价。
+    const mmkPerMyr = 800;
+    const whatsappNumber = "";
+
+    const direction = document.getElementById("direction");
+    const amount = document.getElementById("amount");
+    const result = document.getElementById("result");
+    const amountLabel = document.getElementById("amountLabel");
+    const rateNote = document.getElementById("rateNote");
+    const whatsapp = document.getElementById("whatsapp");
+
+    function update() {
+      const value = Number(amount.value) || 0;
+      const isMmkToMyr = direction.value === "mmk-myr";
+      const converted = isMmkToMyr
+        ? value / mmkPerMyr
+        : value * mmkPerMyr;
+
+      amountLabel.textContent = isMmkToMyr
+        ? "兑换金额（MMK）"
+        : "兑换金额（MYR）";
+
+      result.textContent = isMmkToMyr
+        ? "RM " + converted.toLocaleString("en-MY", {
+            minimumFractionDigits: 2, maximumFractionDigits: 2
+          })
+        : converted.toLocaleString("en-US", {
+            maximumFractionDigits: 2
+          }) + " MMK";
+
+      rateNote.textContent =
+        "演示汇率：1 MYR = " + mmkPerMyr +
+        " MMK。此为演示数据，并非实时或实际报价。";
+
+      const message = "你好，我想咨询换汇：" + value + " " +
+        (isMmkToMyr ? "MMK → MYR" : "MYR → MMK") +
+        "。网站显示的参考金额为 " + result.textContent +
+        "，请确认最新汇率。";
+
+      whatsapp.href = whatsappNumber
+        ? "https://wa.me/" + whatsappNumber +
+          "?text=" + encodeURIComponent(message)
+        : "https://wa.me/?text=" + encodeURIComponent(message);
+    }
+
+    direction.addEventListener("change", update);
+    amount.addEventListener("input", update);
+    update();
+  </script>
+</body>
+</html>
