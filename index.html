@@ -212,6 +212,63 @@ rateNote.textContent =
 
 loadExchangeRates();
     update();
+    // 管理员登录功能
+document.getElementById("adminLoginButton").addEventListener("click", async function () {
+  const email = document.getElementById("adminEmail").value.trim();
+  const password = document.getElementById("adminPassword").value;
+  const message = document.getElementById("adminMessage");
+  const button = document.getElementById("adminLoginButton");
+
+  if (!email || !password) {
+    message.textContent = "请输入管理员邮箱和密码。";
+    return;
+  }
+
+  button.disabled = true;
+  message.textContent = "正在登录...";
+
+  try {
+    const response = await fetch(
+      "https://expdhkafzwohizszwdyd.supabase.co/auth/v1/token?grant_type=password",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": "sb_publishable_roKipX4wYIT1GZ7o-Awl9g_EVF_4K6n"
+        },
+        body: JSON.stringify({ email: email, password: password })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.msg || data.message || data.error_description || "登录失败，请检查邮箱和密码。");
+    }
+
+    window.exchangeAdminToken = data.access_token;
+    message.textContent = "登录成功！下一步添加汇率修改功能。";
+    document.getElementById("adminPassword").value = "";
+  } catch (error) {
+    message.textContent = error.message || "登录失败，请稍后再试。";
+  } finally {
+    button.disabled = false;
+  }
+});
   </script>
+  <!-- 管理员登录区域 -->
+<section id="adminPanel" style="max-width:420px;margin:40px auto;padding:20px;border:1px solid #ddd;border-radius:12px;font-family:Arial,sans-serif;">
+  <h2>管理员登录</h2>
+  <p>登录后可以更新每日汇率。</p>
+
+  <label for="adminEmail">管理员邮箱</label>
+  <input id="adminEmail" type="email" placeholder="输入管理员邮箱" style="display:block;width:100%;padding:10px;margin:8px 0 14px;box-sizing:border-box;">
+
+  <label for="adminPassword">管理员密码</label>
+  <input id="adminPassword" type="password" placeholder="输入管理员密码" style="display:block;width:100%;padding:10px;margin:8px 0 14px;box-sizing:border-box;">
+
+  <button id="adminLoginButton" type="button" style="padding:10px 16px;cursor:pointer;">登录</button>
+  <p id="adminMessage" role="status"></p>
+</section>
 </body>
 </html>
