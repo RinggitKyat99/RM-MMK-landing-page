@@ -323,13 +323,13 @@ button:active {
       </div>
 
       <div class="result">
-        <small>预计兑换金额</small>
+        <small id="resultLabel">预计兑换金额</small>
         <h2 id="result">RM 1,250.00</h2>
       </div>
 
       <p class="rate-note" id="rateNote">
-        示例汇率：1 MYR = 800 MMK。此为演示数据，并非实时或实际报价。
-      </p>
+  示例汇率：1 MYR = 800 MMK。此为演示数据，并非实时或实际报价。
+</p>
 
       <a class="whatsapp" id="whatsapp" href="#" target="_blank"
         rel="noopener noreferrer">WhatsApp 联系我们</a>
@@ -614,6 +614,8 @@ document.addEventListener("DOMContentLoaded", function () {
         optionMyrMmk: "MYR → MMK",
         amountLabel: "ငွေပမာဏ (MMK)",
         amountPlaceholder: "ငွေပမာဏကို ထည့်ပါ"
+        resultLabel: "ခန့်မှန်းရရှိမည့် ပမာဏ",
+      rateNote: "ဤသည် နမူနာငွေလဲနှုန်းဖြစ်ပြီး အချိန်နှင့်တစ်ပြေးညီ အမှန်တကယ်နှုန်းထား မဟုတ်ပါ။",
       },
 
       
@@ -625,6 +627,8 @@ document.addEventListener("DOMContentLoaded", function () {
         optionMyrMmk: "MYR → MMK",
         amountLabel: "Amount (MMK)",
         amountPlaceholder: "Enter amount"
+        resultLabel: "Estimated amount",
+          rateNote: "This is an example exchange rate, not a live or actual quote.",
       },
 
       
@@ -636,6 +640,8 @@ document.addEventListener("DOMContentLoaded", function () {
         optionMyrMmk: "MYR → MMK",
         amountLabel: "兑换金额（MMK）",
         amountPlaceholder: "请输入兑换金额"
+        resultLabel: "预计兑换金额",
+          rateNote: "此为示例汇率，并非实时或实际报价。",
       }
 
     };
@@ -645,10 +651,12 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("pageTitle").textContent = text.title;
       document.getElementById("pageDescription").innerHTML = text.description;
       document.getElementById("directionLabel").textContent = text.direction;
-document.getElementById("optionMmkMyr").textContent = text.optionMmkMyr;
-document.getElementById("optionMyrMmk").textContent = text.optionMyrMmk;
-document.getElementById("amountLabel").textContent = text.amountLabel;
-document.getElementById("amount").placeholder = text.amountPlaceholder;
+      document.getElementById("optionMmkMyr").textContent = text.optionMmkMyr;
+      document.getElementById("optionMyrMmk").textContent = text.optionMyrMmk;
+      document.getElementById("amountLabel").textContent = text.amountLabel;
+      document.getElementById("resultLabel").textContent = text.resultLabel;
+      document.getElementById("rateNote").textContent = text.rateNote;
+      document.getElementById("amount").placeholder = text.amountPlaceholder;
       languageSelect.value = language;
       localStorage.setItem("siteLanguage", language);
     }
