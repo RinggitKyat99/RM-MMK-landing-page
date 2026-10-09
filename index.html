@@ -385,13 +385,13 @@ document.addEventListener("DOMContentLoaded", function () {
   </script>
   <!-- 管理员登录区域 -->
 <section id="adminPanel" style="max-width:420px;margin:40px auto;padding:20px;border:1px solid #ddd;border-radius:12px;font-family:Arial,sans-serif;">
-  <h2>管理员登录</h2>
-  <p>登录后可以更新每日汇率。</p>
+  <h2 style="color:#FFFFFF;">管理员登录</h2>
+  <p style="color:#FFFFFF;">登录后可以更新每日汇率。</p>
 
-  <label for="adminEmail">管理员邮箱</label>
+  <label for="adminEmail" style="color:#FFFFFF;">管理员邮箱</label>
   <input id="adminEmail" type="email" placeholder="输入管理员邮箱" style="display:block;width:100%;padding:10px;margin:8px 0 14px;box-sizing:border-box;">
 
-  <label for="adminPassword">管理员密码</label>
+  <label for="adminPassword" style="color:#FFFFFF;">管理员密码</label>
   <input id="adminPassword" type="password" placeholder="输入管理员密码" style="display:block;width:100%;padding:10px;margin:8px 0 14px;box-sizing:border-box;">
 
   <button id="adminLoginButton" type="button" style="padding:10px 16px;cursor:pointer;">登录</button>
@@ -399,12 +399,12 @@ document.addEventListener("DOMContentLoaded", function () {
   <button id="adminLogoutButton" type="button" style="display:none;margin-top:12px;padding:10px 16px;cursor:pointer;">登出管理员</button>
   <!-- 汇率修改区域 -->
 <div id="rateEditor" style="display:none;margin-top:24px;padding-top:20px;border-top:1px solid #ddd;">
-  <h3>每日汇率设置</h3>
+  <h3 style="color:#FFFFFF;">每日汇率设置</h3>
 
-  <label for="editMmkToMyr">MMK → MYR（每多少 MMK 换 RM 1）</label>
+  <label for="editMmkToMyr" style="color:#FFFFFF;">MMK → MYR（每多少 MMK 换 RM 1）</label>
   <input id="editMmkToMyr" type="number" min="0.000001" step="any" value="800" style="display:block;width:100%;padding:10px;margin:8px 0 16px;box-sizing:border-box;">
 
-  <label for="editMyrToMmk">MYR → MMK（每 RM 1 换多少 MMK）</label>
+  <label for="editMyrToMmk" style="color:#FFFFFF;">MYR → MMK（每 RM 1 换多少 MMK）</label>
   <input id="editMyrToMmk" type="number" min="0.000001" step="any" value="780" style="display:block;width:100%;padding:10px;margin:8px 0 16px;box-sizing:border-box;">
 
   <button id="saveRatesButton" type="button" style="padding:10px 16px;cursor:pointer;">保存汇率</button>
