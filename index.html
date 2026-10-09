@@ -428,16 +428,34 @@ rateNote.textContent =
         const updatedDate = new Date(rows[0].updated_at);
         updatedAtElement.textContent =
           "汇率最后更新：" +
-          updatedDate.toLocaleString("en-MY", {
-            timeZone: "Asia/Kuala_Lumpur",
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: true
-          }) +
-          "（马来西亚时间）";
+          
+const currentLanguage = localStorage.getItem("siteLanguage") || "my";
+
+const updatedLabel = {
+  my: "နောက်ဆုံးအပ်ဒိတ်အချိန်៖ ",
+  en: "Last updated: ",
+  zh: "汇率最后更新："
+};
+
+const malaysiaTimeLabel = {
+  my: "（မလေးရှားစံတော်ချိန်）",
+  en: " (Malaysia time)",
+  zh: "（马来西亚时间）"
+};
+
+updatedAtElement.textContent =
+  (updatedLabel[currentLanguage] || updatedLabel.my) +
+  updatedDate.toLocaleString("en-MY", {
+    timeZone: "Asia/Kuala_Lumpur",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true
+  }) +
+  (malaysiaTimeLabel[currentLanguage] || malaysiaTimeLabel.my);
+
       }
       update();
     }
