@@ -95,6 +95,75 @@ body {
   background-attachment: fixed;
 }
 
+    /* Currency converter card */
+.intro {
+  max-width: 520px;
+  margin: 32px auto 16px;
+  padding: 0 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.intro h1 {
+  color: #ffffff;
+  font-size: clamp(28px, 5vw, 40px);
+  margin-bottom: 10px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.intro p {
+  color: #e7eef8;
+  line-height: 1.7;
+}
+
+.panel {
+  box-sizing: border-box;
+  width: min(92%, 480px);
+  margin: 20px auto 28px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+}
+
+.panel .field {
+  margin-bottom: 18px;
+}
+
+.panel label {
+  display: block;
+  margin-bottom: 8px;
+  color: #17324d;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.panel input,
+.panel select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d6e0e9;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #17324d;
+}
+
+.panel input:focus,
+.panel select:focus {
+  outline: 2px solid rgba(8, 127, 91, 0.25);
+  border-color: #087f5b;
+}
+
+@media (max-width: 600px) {
+  .intro {
+    margin-top: 24px;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+}
 </style>
   <style>
 /* RinggitKyat - cleaner fintech design */
