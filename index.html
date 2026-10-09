@@ -248,8 +248,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.exchangeAdminToken = data.access_token;
-    message.textContent = "登录成功！下一步添加汇率修改功能。";
-    document.getElementById("adminPassword").value = "";
+    window.exchangeAdminToken = data.access_token;
+document.getElementById("rateEditor").style.display = "block";
+message.textContent = "登录成功！现在可以修改汇率。";
+document.getElementById("adminPassword").value = "";
   } catch (error) {
     message.textContent = error.message || "登录失败，请稍后再试。";
   } finally {
@@ -258,6 +260,70 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+    // 保存汇率到 Supabase
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("saveRatesButton").addEventListener("click", async function () {
+    const message = document.getElementById("saveRatesMessage");
+    const button = document.getElementById("saveRatesButton");
+
+    const mmkRate = Number(document.getElementById("editMmkToMyr").value);
+    const myrRate = Number(document.getElementById("editMyrToMmk").value);
+
+    if (!window.exchangeAdminToken) {
+      message.textContent = "请先登录管理员账号。";
+      return;
+    }
+
+    if (!Number.isFinite(mmkRate) || mmkRate <= 0 ||
+        !Number.isFinite(myrRate) || myrRate <= 0) {
+      message.textContent = "请输入大于 0 的有效汇率。";
+      return;
+    }
+
+    button.disabled = true;
+    message.textContent = "正在保存...";
+
+    try {
+      const response = await fetch(
+        "https://expdhkafzwohizszwdyd.supabase.co/rest/v1/exchange_rates?id=eq.1",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": "sb_publishable_roKipX4wYIT1GZ7o-Awl9g_EVF_4K6n",
+            "Authorization": "Bearer " + window.exchangeAdminToken,
+            "Prefer": "return=representation"
+          },
+          body: JSON.stringify({
+            mmk_to_myr_rate: mmkRate,
+            myr_to_mmk_rate: myrRate,
+            updated_at: new Date().toISOString()
+          })
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || data.msg || "保存失败，请检查管理员权限。");
+      }
+
+      if (!Array.isArray(data) || data.length === 0) {
+        throw new Error("数据库没有更新任何记录，请检查管理员权限和汇率记录。");
+      }
+
+      mmkToMyrRate = mmkRate;
+      myrToMmkRate = myrRate;
+      update();
+
+      message.textContent = "汇率保存成功！网站报价已更新。";
+    } catch (error) {
+      message.textContent = error.message || "保存失败，请稍后再试。";
+    } finally {
+      button.disabled = false;
+    }
+  });
+});
   </script>
   <!-- 管理员登录区域 -->
 <section id="adminPanel" style="max-width:420px;margin:40px auto;padding:20px;border:1px solid #ddd;border-radius:12px;font-family:Arial,sans-serif;">
@@ -272,6 +338,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <button id="adminLoginButton" type="button" style="padding:10px 16px;cursor:pointer;">登录</button>
   <p id="adminMessage" role="status"></p>
+  <!-- 汇率修改区域 -->
+<div id="rateEditor" style="display:none;margin-top:24px;padding-top:20px;border-top:1px solid #ddd;">
+  <h3>每日汇率设置</h3>
+
+  <label for="editMmkToMyr">MMK → MYR（每多少 MMK 换 RM 1）</label>
+  <input id="editMmkToMyr" type="number" min="0.000001" step="any" value="800" style="display:block;width:100%;padding:10px;margin:8px 0 16px;box-sizing:border-box;">
+
+  <label for="editMyrToMmk">MYR → MMK（每 RM 1 换多少 MMK）</label>
+  <input id="editMyrToMmk" type="number" min="0.000001" step="any" value="780" style="display:block;width:100%;padding:10px;margin:8px 0 16px;box-sizing:border-box;">
+
+  <button id="saveRatesButton" type="button" style="padding:10px 16px;cursor:pointer;">保存汇率</button>
+  <p id="saveRatesMessage" role="status"></p>
+</div>
 </section>
 </body>
 </html>
