@@ -585,18 +585,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
     // 管理员入口显示与隐藏
 
+
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("toggleAdminButton");
   const adminPanel = document.getElementById("adminPanel");
 
-  adminPanel.hidden = true;
+  adminPanel.style.display = "none";
 
   toggleButton.addEventListener("click", function () {
-    adminPanel.hidden = !adminPanel.hidden;
+    if (adminPanel.style.display === "none") {
+      adminPanel.style.display = "block";
+    } else {
+      adminPanel.style.display = "none";
+    }
   });
 });
-
-    
   
   // 三语切换与记忆
   document.addEventListener("DOMContentLoaded", function () {
@@ -674,7 +677,7 @@ document.addEventListener("DOMContentLoaded", function () {
     管理员入口
   </button>
 </div>
-<section id="adminPanel" hidden style="max-width:420px;margin:24px auto;padding:18px;border:1px solid #ddd;border-radius:12px;font-family:Arial,sans-serif;">
+<section id="adminPanel" style="max-width:420px;margin:24px auto;padding:18px;border:1px solid #ddd;border-radius:12px;font-family:Arial,sans-serif;">
   <h2 style="color:#FFFFFF;">管理员登录</h2>
   <p style="color:#FFFFFF;">登录后可以更新每日汇率。</p>
 
