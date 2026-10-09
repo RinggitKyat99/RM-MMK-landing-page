@@ -303,8 +303,8 @@ button:active {
   </select>
 </div>
 
-      <h1>MMK ⇄ MYR</h1>
-      <p>缅币 · 马币兑换服务<br>简单、方便，轻松查询参考金额。</p>
+      <h1 id="pageTitle">MMK ⇄ MYR</h1>
+     <p id="pageDescription">缅币 · 马币兑换服务<br>简单、方便，轻松查询参考金额。</p>
     </section>
 
     <section class="panel">
@@ -599,15 +599,39 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
     
+  
   // 三语切换与记忆
   document.addEventListener("DOMContentLoaded", function () {
     const languageSelect = document.getElementById("languageSelect");
-    const savedLanguage = localStorage.getItem("siteLanguage") || "my";
 
-    languageSelect.value = savedLanguage;
+    const translations = {
+      my: {
+        title: "MMK ⇄ MYR",
+        description: "မြန်မာကျပ်နှင့် မလေးရှားရင်းဂစ် ငွေလဲဝန်ဆောင်မှု။<br>ရိုးရှင်းလွယ်ကူစွာ ခန့်မှန်းငွေပမာဏကို ကြည့်ရှုနိုင်ပါသည်။"
+      },
+      en: {
+        title: "MMK ⇄ MYR",
+        description: "Myanmar Kyat to Malaysian Ringgit exchange service.<br>Check estimated exchange amounts quickly and easily."
+      },
+      zh: {
+        title: "MMK ⇄ MYR",
+        description: "缅币 · 马币兑换服务。<br>简单、方便，轻松查询参考金额。"
+      }
+    };
+
+    function applyLanguage(language) {
+      const text = translations[language] || translations.my;
+      document.getElementById("pageTitle").textContent = text.title;
+      document.getElementById("pageDescription").innerHTML = text.description;
+      languageSelect.value = language;
+      localStorage.setItem("siteLanguage", language);
+    }
+
+    const savedLanguage = localStorage.getItem("siteLanguage") || "my";
+    applyLanguage(savedLanguage);
 
     languageSelect.addEventListener("change", function () {
-      localStorage.setItem("siteLanguage", languageSelect.value);
+      applyLanguage(languageSelect.value);
     });
   });
 
