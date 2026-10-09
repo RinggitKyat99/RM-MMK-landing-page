@@ -361,9 +361,15 @@ const converted = isMmkToMyr
         ? value / mmkToMyrRate
         : value * myrToMmkRate;
 
-      amountLabel.textContent = isMmkToMyr
-        ? "兑换金额（MMK）"
-        : "兑换金额（MYR）";
+      const currentLanguage = localStorage.getItem("siteLanguage") || "my";
+
+const amountLabels = {
+  my: isMmkToMyr ? "ငွေပမာဏ (MMK)" : "ငွေပမာဏ (MYR)",
+  en: isMmkToMyr ? "Amount (MMK)" : "Amount (MYR)",
+  zh: isMmkToMyr ? "兑换金额（MMK）" : "兑换金额（MYR）"
+};
+
+amountLabel.textContent = amountLabels[currentLanguage] || amountLabels.my;
 
       result.textContent = isMmkToMyr
         ? "RM " + converted.toLocaleString("en-MY", {
