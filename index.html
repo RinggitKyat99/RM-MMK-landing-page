@@ -293,6 +293,16 @@ button:active {
 
   <main>
     <section class="intro">
+      
+<div style="text-align:center;margin-bottom:16px;">
+  <label for="languageSelect" style="margin-right:8px;">ဘာသာစကား / Language / 语言</label>
+  <select id="languageSelect" style="padding:8px 12px;border-radius:8px;">
+    <option value="my">မြန်မာ</option>
+    <option value="en">English</option>
+    <option value="zh">中文</option>
+  </select>
+</div>
+
       <h1>MMK ⇄ MYR</h1>
       <p>缅币 · 马币兑换服务<br>简单、方便，轻松查询参考金额。</p>
     </section>
@@ -588,6 +598,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+    
+  // 三语切换与记忆
+  document.addEventListener("DOMContentLoaded", function () {
+    const languageSelect = document.getElementById("languageSelect");
+    const savedLanguage = localStorage.getItem("siteLanguage") || "my";
+
+    languageSelect.value = savedLanguage;
+
+    languageSelect.addEventListener("change", function () {
+      localStorage.setItem("siteLanguage", languageSelect.value);
+    });
+  });
+
   </script>
   <!-- 管理员登录区域 -->
   <div style="text-align:center;margin:24px auto;">
