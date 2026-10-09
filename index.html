@@ -336,10 +336,10 @@ button:active {
     </section>
   </main>
 
-  <footer>
-    汇率可能变动，实际交易金额以确认报价为准。<br>
-    © 2026 MY EXCHANGE
-  </footer>
+   <footer>
+  <span id="footerNotice">汇率可能变动，实际交易金额以确认报价为准。</span><br>
+  © 2026 MY EXCHANGE
+</footer>
 
   <script>
     // 以下为演示汇率，请在正式使用前改成你的实际报价。
@@ -623,6 +623,7 @@ document.addEventListener("DOMContentLoaded", function () {
      amountPlaceholder: "ငွေပမာဏကို ထည့်ပါ",
         resultLabel: "ခန့်မှန်းရရှိမည့် ပမာဏ",
         whatsappLabel: "WhatsApp မှတစ်ဆင့် ဆက်သွယ်ရန်",
+        footerNotice: "ငွေလဲနှုန်း ပြောင်းလဲနိုင်ပါသည်။ ငွေလွှဲမပြုမီ နောက်ဆုံးနှုန်းထားကို အတည်ပြုပါ။",
       rateNote: "ဤသည် နမူနာငွေလဲနှုန်းဖြစ်ပြီး အချိန်နှင့်တစ်ပြေးညီ အမှန်တကယ်နှုန်းထား မဟုတ်ပါ။",
       },
 
@@ -637,6 +638,7 @@ document.addEventListener("DOMContentLoaded", function () {
         amountPlaceholder: "Enter amount",
         resultLabel: "Estimated amount",
         whatsappLabel: "Contact us on WhatsApp",
+        footerNotice: "Exchange rates may change. Please confirm the final rate before making a transaction.",
           rateNote: "This is an example exchange rate, not a live or actual quote.",
       },
 
@@ -651,6 +653,7 @@ document.addEventListener("DOMContentLoaded", function () {
         amountPlaceholder: "请输入兑换金额",
         resultLabel: "预计兑换金额",
         whatsappLabel: "WhatsApp 联系我们",
+        footerNotice: "汇率可能变动，实际交易金额以确认报价为准。",
           rateNote: "此为示例汇率，并非实时或实际报价。",
       }
 
@@ -667,6 +670,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("resultLabel").textContent = text.resultLabel;
       document.getElementById("rateNote").textContent = text.rateNote;
       document.getElementById("whatsapp").textContent = text.whatsappLabel;
+      document.getElementById("footerNotice").textContent = text.footerNotice;
       document.getElementById("amount").placeholder = text.amountPlaceholder;
       languageSelect.value = language;
       localStorage.setItem("siteLanguage", language);
