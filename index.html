@@ -185,7 +185,7 @@ rateNote.textContent =
 
   try {
     const response = await fetch(
-      supabaseUrl + "/rest/v1/exchange_rates?select=mmk_to_myr_rate,myr_to_mmk_rate&id=eq.1",
+      supabaseUrl + "/rest/v1/exchange_rates?select=mmk_to_myr_rate,myr_to_mmk_rate,updated_at&id=eq.1",
       {
         headers: {
           apikey: supabaseKey,
@@ -203,6 +203,22 @@ rateNote.textContent =
     if (rows.length > 0) {
       mmkToMyrRate = Number(rows[0].mmk_to_myr_rate);
       myrToMmkRate = Number(rows[0].myr_to_mmk_rate);
+            const updatedAtElement = document.getElementById("rateLastUpdated");
+      if (updatedAtElement && rows[0].updated_at) {
+        const updatedDate = new Date(rows[0].updated_at);
+        updatedAtElement.textContent =
+          "汇率最后更新：" +
+          updatedDate.toLocaleString("en-MY", {
+            timeZone: "Asia/Kuala_Lumpur",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true
+          }) +
+          "（马来西亚时间）";
+      }
       update();
     }
   } catch (error) {
@@ -315,6 +331,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
       mmkToMyrRate = mmkRate;
       myrToMmkRate = myrRate;
+            const updatedAtElement = document.getElementById("rateLastUpdated");
+      if (updatedAtElement) {
+        updatedAtElement.textContent =
+          "汇率最后更新：" +
+          new Date().toLocaleString("en-MY", {
+            timeZone: "Asia/Kuala_Lumpur",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true
+          }) +
+          "（马来西亚时间）";
+      }
       update();
 
       message.textContent = "汇率保存成功！网站报价已更新。";
@@ -367,5 +398,9 @@ document.addEventListener("DOMContentLoaded", function () {
   <p id="saveRatesMessage" role="status"></p>
 </div>
 </section>
+  <!-- 汇率最后更新时间 -->
+<p id="rateLastUpdated" style="text-align:center;font-size:13px;color:#666;margin:12px 0;">
+  汇率更新时间：正在读取...
+</p>
 </body>
 </html>
