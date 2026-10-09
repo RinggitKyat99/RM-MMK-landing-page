@@ -129,7 +129,8 @@
 
   <script>
     // 以下为演示汇率，请在正式使用前改成你的实际报价。
-    const mmkPerMyr = 800;
+    const mmkToMyrRate = 800;
+const myrToMmkRate = 780;
     const whatsappNumber = "601168512705";
 
     const direction = document.getElementById("direction");
@@ -141,10 +142,10 @@
 
     function update() {
       const value = Number(amount.value) || 0;
-      const isMmkToMyr = direction.value === "mmk-myr";
-      const converted = isMmkToMyr
-        ? value / mmkPerMyr
-        : value * mmkPerMyr;
+      const isMmkToMyr = direction.value === "mmk-myr";   
+const converted = isMmkToMyr
+        ? value / mmkToMyrRate
+        : value * myrToMmkRate;
 
       amountLabel.textContent = isMmkToMyr
         ? "兑换金额（MMK）"
@@ -158,10 +159,13 @@
             maximumFractionDigits: 2
           }) + " MMK";
 
-      rateNote.textContent =
-        "演示汇率：1 MYR = " + mmkPerMyr +
-        " MMK。此为演示数据，并非实时或实际报价。";
+      
+rateNote.textContent =
+        "MMK → MYR：1 MYR = " + mmkToMyrRate +
+        " MMK；MYR → MMK：1 MYR = " + myrToMmkRate +
+        " MMK。以上为参考报价，实际交易金额以确认报价为准。";
 
+      
       const message = "你好，我想咨询换汇：" + value + " " +
         (isMmkToMyr ? "MMK → MYR" : "MYR → MMK") +
         "。网站显示的参考金额为 " + result.textContent +
