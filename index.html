@@ -250,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.exchangeAdminToken = data.access_token;
     window.exchangeAdminToken = data.access_token;
 document.getElementById("rateEditor").style.display = "block";
+    document.getElementById("adminLogoutButton").style.display = "inline-block";
 message.textContent = "登录成功！现在可以修改汇率。";
 document.getElementById("adminPassword").value = "";
   } catch (error) {
@@ -324,6 +325,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+    // 管理员登出功能
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("adminLogoutButton").addEventListener("click", function () {
+    window.exchangeAdminToken = null;
+
+    document.getElementById("rateEditor").style.display = "none";
+    document.getElementById("adminLogoutButton").style.display = "none";
+    document.getElementById("adminEmail").value = "";
+    document.getElementById("adminPassword").value = "";
+    document.getElementById("adminMessage").textContent = "你已登出管理员账号。";
+    document.getElementById("saveRatesMessage").textContent = "";
+  });
+});
   </script>
   <!-- 管理员登录区域 -->
 <section id="adminPanel" style="max-width:420px;margin:40px auto;padding:20px;border:1px solid #ddd;border-radius:12px;font-family:Arial,sans-serif;">
@@ -338,6 +352,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <button id="adminLoginButton" type="button" style="padding:10px 16px;cursor:pointer;">登录</button>
   <p id="adminMessage" role="status"></p>
+  <button id="adminLogoutButton" type="button" style="display:none;margin-top:12px;padding:10px 16px;cursor:pointer;">登出管理员</button>
   <!-- 汇率修改区域 -->
 <div id="rateEditor" style="display:none;margin-top:24px;padding-top:20px;border-top:1px solid #ddd;">
   <h3>每日汇率设置</h3>
