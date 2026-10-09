@@ -573,8 +573,28 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("saveRatesMessage").textContent = "";
   });
 });
+    // 管理员入口显示与隐藏
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.getElementById("toggleAdminButton");
+  const adminPanel = document.getElementById("adminPanel");
+
+  adminPanel.style.display = "none";
+
+  toggleButton.addEventListener("click", function () {
+    if (adminPanel.style.display === "none") {
+      adminPanel.style.display = "block";
+    } else {
+      adminPanel.style.display = "none";
+    }
+  });
+});
   </script>
   <!-- 管理员登录区域 -->
+  <div style="text-align:center;margin:24px auto;">
+  <button id="toggleAdminButton" type="button" style="padding:10px 18px;border:1px solid #f3c969;border-radius:10px;background:#061735;color:#ffffff;cursor:pointer;">
+    管理员入口
+  </button>
+</div>
 <section id="adminPanel" style="max-width:420px;margin:24px auto;padding:18px;border:1px solid #ddd;border-radius:12px;font-family:Arial,sans-serif;">
   <h2 style="color:#FFFFFF;">管理员登录</h2>
   <p style="color:#FFFFFF;">登录后可以更新每日汇率。</p>
