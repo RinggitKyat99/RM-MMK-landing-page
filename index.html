@@ -96,6 +96,114 @@ body {
 }
 
 </style>
+  <style>
+/* RinggitKyat - cleaner fintech design */
+:root {
+  --navy: #061735;
+  --green: #087f5b;
+  --gold: #f3c969;
+  --text: #17324d;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, "Noto Sans Myanmar", sans-serif;
+  color: var(--text);
+  background-color: var(--navy);
+  background-image:
+    linear-gradient(rgba(3, 14, 36, 0.72), rgba(3, 14, 36, 0.82)),
+    url("./NEW%20BACKGROUND.png");
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Main content cards */
+body > section,
+body > main,
+body > div {
+  box-sizing: border-box;
+}
+
+/* Consistent rounded inputs */
+input,
+select,
+button {
+  font: inherit;
+  border-radius: 10px;
+}
+
+input,
+select {
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+/* Clear, modern buttons */
+button {
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  filter: brightness(1.06);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* Keep admin form readable on the dark background */
+#adminPanel {
+  box-sizing: border-box;
+  width: min(92%, 480px);
+  margin: 32px auto;
+  padding: 24px;
+  color: #ffffff;
+  background: rgba(5, 20, 47, 0.94);
+  border: 1px solid rgba(243, 201, 105, 0.55) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.25);
+}
+
+#adminPanel h2,
+#adminPanel h3,
+#adminPanel label,
+#adminPanel p {
+  color: #ffffff;
+}
+
+#adminPanel input {
+  width: 100%;
+  border: 1px solid #d8e3ee;
+  background: #ffffff;
+  color: #17324d;
+  padding: 10px 12px;
+}
+
+#adminPanel button {
+  border: 0;
+  background: var(--green);
+  color: #ffffff;
+  padding: 12px 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Mobile-friendly layout */
+@media (max-width: 600px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  #adminPanel {
+    width: calc(100% - 28px);
+    margin: 24px auto;
+    padding: 18px;
+  }
+}
+</style>
 </head>
 <body>
   <header><div class="logo">MY EXCHANGE</div></header>
