@@ -468,6 +468,7 @@ button:active {
   <h2>Telegram 联系我们</h2>
 
   <a class="telegram-link"
+    id="telegramChannel"
      href="https://t.me/MMKExchangeVVIP"
      target="_blank"
      rel="noopener noreferrer">
@@ -479,6 +480,7 @@ button:active {
   </a>
 
   <a class="telegram-link"
+    id="telegramCustomerService"
      href="https://t.me/SuMyatMMK"
      target="_blank"
      rel="noopener noreferrer">
@@ -845,6 +847,20 @@ document.addEventListener("DOMContentLoaded", function () {
         whatsappLabel: "WhatsApp မှတစ်ဆင့် ဆက်သွယ်ရန်",
         footerNotice: "ငွေလဲနှုန်း ပြောင်းလဲနိုင်ပါသည်။ ငွေလွှဲမပြုမီ နောက်ဆုံးနှုန်းထားကို အတည်ပြုပါ။",
       rateNote: "ဤသည် နမူနာငွေလဲနှုန်းဖြစ်ပြီး အချိန်နှင့်တစ်ပြေးညီ အမှန်တကယ်နှုန်းထား မဟုတ်ပါ။",
+telegramTitle: "Telegram ဆက်သွယ်ရန်",
+telegramChannel: "Telegram Channel",
+telegramChannelDesc: "ငွေလဲနှုန်းနှင့် ကြေညာချက်များအတွက် Channel ကို Follow လုပ်ပါ",
+telegramCustomerService: "Telegram Customer Service",
+telegramCustomerServiceDesc: "ငွေလွှဲ/ငွေလဲကိစ္စများ မေးမြန်းရန် စာပို့ပါ",
+paymentMethodsTitle: "အသုံးပြုနိုင်သော ငွေပေးချေမှုစနစ်များ",
+malaysiaTitle: "မလေးရှား",
+myanmarTitle: "မြန်မာ",
+duitnowLabel: "DuitNow QR",
+merchantradeLabel: "Merchantrade",
+tngLabel: "TNG eWallet",
+kpayLabel: "KPay / KBZPay",
+kbzBankLabel: "KBZ Bank",
+
       },
 
       
@@ -859,7 +875,21 @@ document.addEventListener("DOMContentLoaded", function () {
         resultLabel: "Estimated amount",
         whatsappLabel: "Contact us on WhatsApp",
         footerNotice: "Exchange rates may change. Please confirm the final rate before making a transaction.",
-          rateNote: "This is an example exchange rate, not a live or actual quote.",
+          rateNote: "This is an example exchange rate, not a live or actual quote.",        
+telegramTitle: "Contact us on Telegram",
+telegramChannel: "Telegram Channel",
+telegramChannelDesc: "Follow for exchange rates and announcements",
+telegramCustomerService: "Telegram Customer Service",
+telegramCustomerServiceDesc: "Message us for transaction enquiries",
+paymentMethodsTitle: "Supported Payment Methods",
+malaysiaTitle: "Malaysia",
+myanmarTitle: "Myanmar",
+duitnowLabel: "DuitNow QR",
+merchantradeLabel: "Merchantrade",
+tngLabel: "TNG eWallet",
+kpayLabel: "KPay / KBZPay",
+kbzBankLabel: "KBZ Bank",
+
       },
 
       
@@ -872,9 +902,23 @@ document.addEventListener("DOMContentLoaded", function () {
         amountLabel: "兑换金额（MMK）",
         amountPlaceholder: "请输入兑换金额",
         resultLabel: "预计兑换金额",
-        whatsappLabel: "WhatsApp 联系我们",
-        footerNotice: "汇率可能变动，实际交易金额以确认报价为准。",
-          rateNote: "此为示例汇率，并非实时或实际报价。",
+whatsappLabel: "WhatsApp 联系我们",
+footerNotice: "汇率可能变动，实际交易金额以确认报价为准。",
+rateNote: "此为示例汇率，并非实时或实际报价。",
+telegramTitle: "Telegram 联系我们",
+telegramChannel: "Telegram 频道",
+telegramChannelDesc: "关注频道，获取最新汇率与公告",
+telegramCustomerService: "Telegram 客服",
+telegramCustomerServiceDesc: "私信客服，咨询交易事宜",
+paymentMethodsTitle: "支持的交易方式",
+malaysiaTitle: "马来西亚",
+myanmarTitle: "缅甸",
+duitnowLabel: "DuitNow QR",
+merchantradeLabel: "Merchantrade",
+tngLabel: "TNG eWallet",
+kpayLabel: "KPay / KBZPay",
+kbzBankLabel: "KBZ Bank",
+
       }
 
     };
@@ -889,6 +933,11 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("amountLabel").textContent = text.amountLabel;
       document.getElementById("resultLabel").textContent = text.resultLabel;
       document.getElementById("rateNote").textContent = text.rateNote;
+      document.getElementById("telegramTitle").textContent = text.telegramTitle;
+      document.querySelector("#telegramChannel strong").textContent = text.telegramChannel;
+document.querySelector("#telegramChannel small").textContent = text.telegramChannelDesc;
+document.querySelector("#telegramCustomerService strong").textContent = text.telegramCustomerService;
+document.querySelector("#telegramCustomerService small").textContent = text.telegramCustomerServiceDesc;
       document.getElementById("whatsapp").textContent = text.whatsappLabel;
       document.getElementById("footerNotice").textContent = text.footerNotice;
       document.getElementById("amount").placeholder = text.amountPlaceholder;
