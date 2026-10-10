@@ -499,15 +499,15 @@ button:active {
   <div class="payment-logos">
     <div class="payment-logo">
       <img src="images/DUIT%20NOW.jfif" alt="DuitNow QR">
-      <span>DuitNow QR</span>
+<span id="duitnowLabel">DuitNow QR</span>
     </div>
     <div class="payment-logo">
       <img src="images/merchantrade.png" alt="Merchantrade">
-      <span>Merchantrade</span>
+<span id="merchantradeLabel">Merchantrade</span>
     </div>
     <div class="payment-logo">
       <img src="images/tng.png" alt="TNG eWallet">
-      <span>TNG eWallet</span>
+<span id="tngLabel">TNG eWallet</span>
     </div>
   </div>
 
@@ -515,11 +515,11 @@ button:active {
   <div class="payment-logos">
     <div class="payment-logo">
       <img src="images/Kpay.png" alt="KBZPay">
-      <span>KPay / KBZPay</span>
+<span id="kpayLabel">KPay / KBZPay</span>
     </div>
     <div class="payment-logo">
       <img src="images/KBZ.png" alt="KBZ Bank">
-      <span>KBZ Bank</span>
+<span id="kbzBankLabel">KBZ Bank</span>
     </div>
   </div>
 </div>
@@ -935,6 +935,9 @@ kbzBankLabel: "KBZ Bank",
       document.getElementById("paymentMethodsTitle").textContent = text.paymentMethodsTitle;
 document.getElementById("malaysiaTitle").textContent = text.malaysiaTitle;
 document.getElementById("myanmarTitle").textContent = text.myanmarTitle;
+      document.getElementById("duitnowLabel").textContent = text.duitnowLabel;
+document.getElementById("merchantradeLabel").textContent = text.merchantradeLabel;
+document.getElementById("tngLabel").textContent = text.tngLabel;
       document.getElementById("telegramTitle").textContent = text.telegramTitle;
       document.querySelector("#telegramChannel strong").textContent = text.telegramChannel;
 document.querySelector("#telegramChannel small").textContent = text.telegramChannelDesc;
