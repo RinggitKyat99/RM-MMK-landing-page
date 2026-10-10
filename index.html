@@ -497,6 +497,26 @@ document.addEventListener("DOMContentLoaded", function () {
     window.exchangeAdminToken = data.access_token;
 document.getElementById("rateEditor").style.display = "block";
     document.getElementById("adminLogoutButton").style.display = "inline-block";
+    const adminCheck = await fetch(
+  `${SUPABASE_URL}/rest/v1/rpc/is_exchange_admin`,
+  {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${data.access_token}`,
+      "Content-Type": "application/json"
+    },
+    body: "{}"
+  }
+);
+
+if (!adminCheck.ok || await adminCheck.json() !== true) {
+  message.textContent = "登录成功，但此账号没有管理员权限。";
+  document.getElementById("adminPassword").value = "";
+  return;
+}
+
+window.exchangeAdminToken = data.access_token;
 message.textContent = "登录成功！现在可以修改汇率。";
 document.getElementById("adminPassword").value = "";
   } catch (error) {
