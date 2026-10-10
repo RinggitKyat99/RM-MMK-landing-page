@@ -497,8 +497,8 @@ document.addEventListener("DOMContentLoaded", function () {
     window.exchangeAdminToken = data.access_token;
 document.getElementById("rateEditor").style.display = "block";
     document.getElementById("adminLogoutButton").style.display = "inline-block";
-    const adminCheck = await fetch(
-`https://expdhkafzwohizszwdyd.supabase.co/rest/v1/rpc/is_exchange_admin`
+const adminCheck = await fetch(
+  `https://expdhkafzwohizszwdyd.supabase.co/rest/v1/rpc/is_exchange_admin`,
   {
     method: "POST",
     headers: {
