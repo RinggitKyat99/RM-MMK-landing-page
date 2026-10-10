@@ -414,6 +414,45 @@ button:active {
   }
 }
     
+.trading-rules {
+  margin-top: 18px;
+  padding: 18px;
+  background: #ffffff;
+  border-radius: 14px;
+}
+
+.trading-rules h2 {
+  margin: 0 0 16px;
+  text-align: center;
+  color: #102a56;
+  font-size: 20px;
+}
+
+.rule-card {
+  margin-bottom: 12px;
+  padding: 12px;
+  background: #f4f8ff;
+  border: 1px solid #dce7f5;
+  border-radius: 10px;
+}
+
+.rule-card h3 {
+  margin: 0 0 8px;
+  color: #123b78;
+  font-size: 15px;
+}
+
+.rule-card p {
+  margin: 5px 0;
+  color: #333333;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.rule-card:last-child {
+  margin-bottom: 0;
+}
+
 </style>
 </head>
 <body>
@@ -523,6 +562,28 @@ button:active {
     </div>
   </div>
 </div>
+</section>
+
+<section class="trading-rules">
+  <h2 id="tradingRulesTitle">交易规则</h2>
+
+  <div class="rule-card">
+<h3 id="operatingHoursTitle">1. 营业时间</h3>
+<p><span id="operatingHoursDays">星期一至星期六</span>：<span id="operatingHoursTime">中午 12:00 – 晚上 10:00（马来西亚时间）</span></p>
+<p id="sundayClosed">星期日：休息</p>
+<p id="publicHolidayNotice">公共假日：请通过 WhatsApp 或 Telegram 确认营业安排。</p>
+  </div>
+
+  <div class="rule-card">
+<h3 id="minimumExchangeTitle">2. 最低兑换金额</h3>
+<p id="minimumExchangeText">最低兑换金额：RM 100</p>
+  </div>
+
+  <div class="rule-card">
+<h3 id="malaysiaPaymentTitle">3. 马来西亚付款方式</h3>
+<p id="malaysiaPaymentText">TNG eWallet、DuitNow、本地银行转账</p>
+<p id="tngPinFee">TNG Reload PIN 服务费：1%</p>
+  </div>
 </section>
 
   </main>
@@ -859,6 +920,18 @@ merchantradeLabel: "Merchantrade",
 tngLabel: "TNG eWallet",
 kpayLabel: "KPay / KBZPay",
 kbzBankLabel: "KBZ Bank",
+tradingRulesTitle: "ငွေလဲလှယ်မှု စည်းမျဉ်းများ",
+operatingHoursTitle: "1. လုပ်ငန်းချိန်",
+operatingHoursDays: "တနင်္လာနေ့မှ စနေနေ့အထိ",
+operatingHoursTime: "နေ့လယ် ၁၂:၀၀ မှ ည ၁၀:၀၀ အထိ (မလေးရှားစံတော်ချိန်)",
+sundayClosed: "တနင်္ဂနွေနေ့: ပိတ်သည်",
+publicHolidayNotice: "အများပြည်သူရုံးပိတ်ရက်များတွင် ဖွင့်ချိန်ကို WhatsApp သို့မဟုတ် Telegram မှတစ်ဆင့် အတည်ပြုပါ။",
+minimumExchangeTitle: "2. အနည်းဆုံး ငွေလဲလှယ်ပမာဏ",
+minimumExchangeText: "အနည်းဆုံး ငွေလဲလှယ်ပမာဏ: RM 100",
+malaysiaPaymentTitle: "3. မလေးရှား ငွေပေးချေမှုနည်းလမ်းများ",
+malaysiaPaymentText: "TNG eWallet၊ DuitNow၊ ပြည်တွင်းဘဏ်ငွေလွှဲ",
+tngPinFee: "TNG Reload PIN ဝန်ဆောင်ခ: 1%",
+
 
       },
 
@@ -887,7 +960,18 @@ duitnowLabel: "DuitNow QR",
 merchantradeLabel: "Merchantrade",
 tngLabel: "TNG eWallet",
 kpayLabel: "KPay / KBZPay",
-kbzBankLabel: "KBZ Bank",
+kbzBankLabel: "KBZ Bank",  
+tradingRulesTitle: "Trading Rules",
+operatingHoursTitle: "1. Operating Hours",
+operatingHoursDays: "Monday to Saturday",
+operatingHoursTime: "12:00 PM – 10:00 PM (Malaysia Time)",
+sundayClosed: "Sunday: Closed",
+publicHolidayNotice: "Public holidays: Please confirm operating hours via WhatsApp or Telegram.",
+minimumExchangeTitle: "2. Minimum Exchange Amount",
+minimumExchangeText: "Minimum exchange amount: RM 100",
+malaysiaPaymentTitle: "3. Malaysia Payment Methods",
+malaysiaPaymentText: "TNG eWallet, DuitNow, Local Bank Transfer",
+tngPinFee: "TNG Reload PIN service fee: 1%",
 
       },
 
@@ -916,7 +1000,19 @@ duitnowLabel: "DuitNow QR",
 merchantradeLabel: "Merchantrade",
 tngLabel: "TNG eWallet",
 kpayLabel: "KPay / KBZPay",
-kbzBankLabel: "KBZ Bank",
+kbzBankLabel: "KBZ Bank",    
+tradingRulesTitle: "交易规则",
+operatingHoursTitle: "1. 营业时间",
+operatingHoursDays: "星期一至星期六",
+operatingHoursTime: "中午 12:00 – 晚上 10:00（马来西亚时间）",
+sundayClosed: "星期日：休息",
+publicHolidayNotice: "公共假日：请通过 WhatsApp 或 Telegram 确认营业安排。",
+minimumExchangeTitle: "2. 最低兑换金额",
+minimumExchangeText: "最低兑换金额：RM 100",
+malaysiaPaymentTitle: "3. 马来西亚付款方式",
+malaysiaPaymentText: "TNG eWallet、DuitNow、本地银行转账",
+tngPinFee: "TNG Reload PIN 服务费：1%",
+
 
       }
 
@@ -940,6 +1036,17 @@ document.getElementById("merchantradeLabel").textContent = text.merchantradeLabe
 document.getElementById("tngLabel").textContent = text.tngLabel;
       document.getElementById("kpayLabel").textContent = text.kpayLabel;
 document.getElementById("kbzBankLabel").textContent = text.kbzBankLabel;
+document.getElementById("tradingRulesTitle").textContent = text.tradingRulesTitle;
+document.getElementById("operatingHoursTitle").textContent = text.operatingHoursTitle;
+document.getElementById("operatingHoursDays").textContent = text.operatingHoursDays;
+document.getElementById("operatingHoursTime").textContent = text.operatingHoursTime;
+document.getElementById("sundayClosed").textContent = text.sundayClosed;
+document.getElementById("publicHolidayNotice").textContent = text.publicHolidayNotice;
+document.getElementById("minimumExchangeTitle").textContent = text.minimumExchangeTitle;
+document.getElementById("minimumExchangeText").textContent = text.minimumExchangeText;
+document.getElementById("malaysiaPaymentTitle").textContent = text.malaysiaPaymentTitle;
+document.getElementById("malaysiaPaymentText").textContent = text.malaysiaPaymentText;
+document.getElementById("tngPinFee").textContent = text.tngPinFee;
       document.getElementById("telegramTitle").textContent = text.telegramTitle;
       document.querySelector("#telegramChannel strong").textContent = text.telegramChannel;
 document.querySelector("#telegramChannel small").textContent = text.telegramChannelDesc;
