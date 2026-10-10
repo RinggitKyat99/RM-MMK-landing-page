@@ -343,6 +343,77 @@ button:active {
   }
 }
 
+
+.telegram-section {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #f1f8fc;
+  color: #1c2b36;
+}
+
+.telegram-section h2 {
+  margin: 0 0 16px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.telegram-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #168ac4;
+  text-decoration: none;
+  border: 1px solid #d8eaf4;
+}
+
+.telegram-link:hover {
+  background: #e5f4fc;
+}
+
+.telegram-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #229ed9;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.telegram-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.telegram-text strong {
+  font-size: 15px;
+}
+
+.telegram-text small {
+  color: #637783;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .telegram-section {
+    padding: 14px;
+  }
+
+  .telegram-link {
+    padding: 12px;
+  }
+}
+    
 </style>
 </head>
 <body>
@@ -392,6 +463,34 @@ button:active {
 <a class="whatsapp" id="whatsapp" href="#" target="_blank"
    rel="noopener noreferrer">WhatsApp 联系我们</a>
 
+
+<div class="telegram-section">
+  <h2>Telegram 联系我们</h2>
+
+  <a class="telegram-link"
+     href="https://t.me/MMKExchangeVVIP"
+     target="_blank"
+     rel="noopener noreferrer">
+    <span class="telegram-icon">✈</span>
+    <span class="telegram-text">
+      <strong>Telegram Channel</strong>
+      <small>关注频道，获取最新汇率与公告</small>
+    </span>
+  </a>
+
+  <a class="telegram-link"
+     href="https://t.me/SuMyatMMK"
+     target="_blank"
+     rel="noopener noreferrer">
+    <span class="telegram-icon">✉</span>
+    <span class="telegram-text">
+      <strong>Telegram Customer Service</strong>
+      <small>私信客服，咨询交易事宜</small>
+    </span>
+  </a>
+</div>
+      
+      
 <div class="payment-methods">
   <h2>支持的交易方式</h2>
 
